@@ -1,0 +1,12 @@
+{
+  "name": "dosqlite",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "miniflare": "^4.20250823.1"
+  }
+}

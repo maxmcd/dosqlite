@@ -1,0 +1,10 @@
+name = "dosqlite-worker"
+main = "dist/index.js"
+compatibility_date = "2024-08-31"
+
+[durable_objects]
+bindings = [{ name = "SQLDRIVER", class_name = "SQLDriver" }]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SQLDriver"]
