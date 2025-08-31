@@ -1,4 +1,4 @@
-package main
+package dosqlite
 
 import (
 	"bytes"
@@ -129,7 +129,8 @@ func TestTCPConnection(t *testing.T) {
 			if err != nil {
 				return
 			}
-			_, _ = io.Copy(io.MultiWriter(os.Stdout, conn), conn)
+			_, _ = conn.Write([]byte("hello\n"))
+			_, _ = io.Copy(os.Stdout, conn)
 		}
 	}()
 
