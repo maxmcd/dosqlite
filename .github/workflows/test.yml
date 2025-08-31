@@ -1,0 +1,44 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.24"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Install dependencies in test folder
+        run: |
+          cd test
+          npm install
+
+      - name: Install dependencies in worker folder
+        run: |
+          cd worker
+          npm install
+
+      - name: Generate Wrangler types
+        run: |
+          cd worker
+          npx wrangler types
+
+      - name: Run Go tests
+        run: go test -v ./...
